@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "@babel/polyfill": "^7.0.0",
+        "axios": "^0.18.0",
         "css-loader": "^1.0.1",
         "express": "^4.16.4",
         "mini-css-extract-plugin": "^0.4.5",
