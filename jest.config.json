@@ -4,7 +4,5 @@
         "<rootDir>/src/tests/setupTests.js",
         "@babel/polyfill"
     ],
-    "snapshotSerializers": [
-        "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
 }
