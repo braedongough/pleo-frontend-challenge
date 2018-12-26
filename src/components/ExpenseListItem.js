@@ -1,7 +1,7 @@
 import React from "react";
 
 export const ExpenseListItem = ({ merchant, user, amount }) => (
-    <div>
+    <div className="list-item">
         <h3>{merchant}</h3>
         <p>
             {user.first} {user.last}

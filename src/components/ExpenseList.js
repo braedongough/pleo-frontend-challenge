@@ -30,8 +30,8 @@ export class ExpenseList extends React.Component {
     };
     render() {
         return (
-            <div>
-                <div id="expense-list">
+            <div className="content-container">
+                <div className="list-body" id="expense-list">
                     {this.props.expenses.map(expense => (
                         <ExpenseListItem key={expense.id} {...expense} />
                     ))}
