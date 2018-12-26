@@ -4,29 +4,31 @@ import { startLoadExpenses } from "../actions/expenses";
 import ExpenseListItem from "./ExpenseListItem";
 //import selector
 
-export const ExpenseList = ({ expenses, loadExpenses }) => {
-    console.log(expenses[0]);
-    return (
-        <div>
-            {expenses.map(expense => (
-                <ExpenseListItem key={expense.id} {...expense} />
-            ))}
-            <a onClick={loadExpenses}>Load more</a>
-        </div>
-    );
-};
+export class ExpenseList extends React.Component {
+    state = {
+        offset: 25
+    };
+    loadExpenses = () => {
+        console.log(this.state.offset);
+        this.props.dispatch(startLoadExpenses(this.state.offset));
+        this.setState(prevState => ({
+            offset: prevState.offset + 25
+        }));
+    };
+    render() {
+        return (
+            <div>
+                {this.props.expenses.map(expense => (
+                    <ExpenseListItem key={expense.id} {...expense} />
+                ))}
+                <a onClick={this.loadExpenses}>Load more</a>
+            </div>
+        );
+    }
+}
 
 const mapStateToProps = state => ({
     expenses: state.expenses
 });
 
-const mapDispatchToProps = dispatch => ({
-    loadExpenses: () => {
-        dispatch(startLoadExpenses());
-    }
-});
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ExpenseList);
+export default connect(mapStateToProps)(ExpenseList);
