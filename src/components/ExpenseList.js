@@ -8,8 +8,21 @@ export class ExpenseList extends React.Component {
     state = {
         offset: 25
     };
+    componentDidMount() {
+        this.scrollListener = window.addEventListener("scroll", e => {
+            this.handleScroll(e);
+        });
+    }
+    handleScroll = e => {
+        const lastLi = document.querySelector(
+            "div#expense-list > div:last-child"
+        );
+        const lastLiOffset = lastLi.offsetTop + lastLi.clientHeight;
+        const pageOffset = window.pageYOffset + window.innerHeight;
+        let bottomOffset = 20;
+        if (pageOffset > lastLiOffset - bottomOffset) this.loadExpenses();
+    };
     loadExpenses = () => {
-        console.log(this.state.offset);
         this.props.dispatch(startLoadExpenses(this.state.offset));
         this.setState(prevState => ({
             offset: prevState.offset + 25
@@ -18,15 +31,18 @@ export class ExpenseList extends React.Component {
     render() {
         return (
             <div>
-                {this.props.expenses.map(expense => (
-                    <ExpenseListItem key={expense.id} {...expense} />
-                ))}
-                <a onClick={this.loadExpenses}>Load more</a>
+                <div id="expense-list">
+                    {this.props.expenses.map(expense => (
+                        <ExpenseListItem key={expense.id} {...expense} />
+                    ))}
+                </div>
             </div>
         );
     }
 }
 
+//this is mapped to props because it will later be used in the
+//selector when I implement the filters
 const mapStateToProps = state => ({
     expenses: state.expenses
 });
