@@ -6,8 +6,8 @@ export const setExpenses = expenses => ({
 });
 
 export const startSetExpenses = () => {
-    return async (dispatch, getState) => {
+    return async dispatch => {
         const response = await API.get();
-        dispatch(setExpenses(response.data));
+        dispatch(setExpenses(response.data.expenses));
     };
 };
