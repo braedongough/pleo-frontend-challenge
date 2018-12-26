@@ -11,3 +11,17 @@ export const startSetExpenses = () => {
         dispatch(setExpenses(response.data.expenses));
     };
 };
+
+export const loadExpenses = newExpenses => ({
+    type: "LOAD_EXPENSES",
+    newExpenses
+});
+
+export const startLoadExpenses = () => {
+    return async dispatch => {
+        let offset = 25;
+        const response = await API.get(`?offset=${offset}`);
+        offset += 25;
+        dispatch(loadExpenses(response.data.expenses));
+    };
+};
