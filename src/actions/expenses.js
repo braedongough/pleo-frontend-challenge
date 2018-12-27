@@ -1,5 +1,4 @@
 import API from "../api/api";
-import api from "../api/api";
 
 export const setExpenses = expenses => ({
     type: "SET_EXPENSES",
@@ -25,13 +24,15 @@ export const startLoadExpenses = offset => {
     };
 };
 
-export const addReceipt = receipt => ({
-    type: "ADD_RECEIPT",
-    receipt
+export const addReceipts = receipts => ({
+    type: "ADD_RECEIPTS",
+    receipts
 });
 
-export const startAddReceipt = (expenseId, receipt) => {
+export const startAddReceipts = expenseId => {
     return async dispatch => {
-        const response = await API.post(`${expenseId}/${receipt}}`);
+        const response = await API.get(`${expenseId}/`);
+        const receipts = response.data.receipts;
+        dispatch(addReceipts(receipts));
     };
 };
