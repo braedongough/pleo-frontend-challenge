@@ -58,9 +58,11 @@ describe("SET_EXPENSES", () => {
 
     describe("ADD_RECEIPTS", () => {
         it("should setup addReceipts action object", () => {
-            const action = addReceipts(receipts);
+            const expenseId = expenses[0].id;
+            const action = addReceipts(expenseId, receipts);
             expect(action).toEqual({
                 type: "ADD_RECEIPTS",
+                expenseId,
                 receipts
             });
         });
@@ -71,6 +73,7 @@ describe("SET_EXPENSES", () => {
                 const actions = store.getActions();
                 expect(actions[0]).toEqual({
                     type: "ADD_RECEIPTS",
+                    expenseId,
                     receipts: expect.any(Array)
                 });
                 done();

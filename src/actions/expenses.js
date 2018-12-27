@@ -24,8 +24,9 @@ export const startLoadExpenses = offset => {
     };
 };
 
-export const addReceipts = receipts => ({
+export const addReceipts = (expenseId, receipts = []) => ({
     type: "ADD_RECEIPTS",
+    expenseId,
     receipts
 });
 
@@ -33,6 +34,6 @@ export const startAddReceipts = expenseId => {
     return async dispatch => {
         const response = await API.get(`${expenseId}/`);
         const receipts = response.data.receipts;
-        dispatch(addReceipts(receipts));
+        dispatch(addReceipts(expenseId, receipts));
     };
 };
