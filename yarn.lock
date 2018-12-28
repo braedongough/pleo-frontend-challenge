@@ -3002,6 +3002,11 @@ filename-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
   integrity sha1-wcS5vuPglyXdsQa3XB4wH+LxiyY=
 
+filepond-plugin-image-preview@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-3.1.5.tgz#f26f34c51ac84377e5c58db130226df05cfc2094"
+  integrity sha512-I16celG+UtNHYkwCeY1+CBGsV5Y0MH6jJj8G6Ex3KUtgvP9QoaVy3VwXbLy8eektr5Yq8dsawBmdjcTz1Ji7/A==
+
 filepond@^3.7.1:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/filepond/-/filepond-3.7.1.tgz#4e7961a19d2722c55c6db09808db6b927b46d2df"

@@ -1,5 +1,4 @@
 import configureMockStore from "redux-mock-store";
-import mockAxios from "jest-mock-axios";
 import thunk from "redux-thunk";
 import {
     setExpenses,
@@ -7,7 +6,9 @@ import {
     loadExpenses,
     startLoadExpenses,
     addReceipts,
-    startAddReceipts
+    startAddReceipts,
+    loadReceipts,
+    startLoadReceipts
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
 import receipts from "../fixtures/receipts";
@@ -80,4 +81,28 @@ describe("SET_EXPENSES", () => {
             });
         });
     });
+    // describe("LOAD_RECEIPTS", () => {
+    //     it("should setup loadReceipts action object", () => {
+    //         const expenseId = expenses[0].id;
+    //         const action = loadReceipts(expenseId, receipts);
+    //         expect(action).toEqual({
+    //             type: "LOAD_RECEIPTS",
+    //             expenseId,
+    //             receipts
+    //         });
+    //     });
+    //     it("should fetch receipt data from api", done => {
+    //         const store = createMockStore({});
+    //         const expenseId = expenses[0].id;
+    //         store.dispatch(startLoadReceipts(expenseId)).then(() => {
+    //             const actions = store.getActions();
+    //             expect(actions[0]).toEqual({
+    //                 type: "LOAD_RECEIPTS",
+    //                 expenseId,
+    //                 receipts: expect.any(Array)
+    //             });
+    //             done();
+    //         });
+    //     });
+    // });
 });

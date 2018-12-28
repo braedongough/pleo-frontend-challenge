@@ -1,8 +1,16 @@
 import React from "react";
-import { FilePond, File } from "react-filepond";
+import { FilePond, registerPlugin } from "react-filepond";
+import { connect } from "react-redux";
 import { baseURL } from "../api/api";
 
-export const ExpenseListItem = ({ merchant, user, amount, comment, id }) => (
+export const ExpenseListItem = ({
+    receipts,
+    merchant,
+    user,
+    amount,
+    comment,
+    id
+}) => (
     <div className="list-item">
         <h3>{merchant}</h3>
         <p>
@@ -24,6 +32,4 @@ export const ExpenseListItem = ({ merchant, user, amount, comment, id }) => (
     </div>
 );
 
-export default ExpenseListItem;
-
-//add note to expense
+export default connect()(ExpenseListItem);
