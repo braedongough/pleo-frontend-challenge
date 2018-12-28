@@ -1,5 +1,10 @@
 import expensesReducer from "../../reducers/expenses";
-import { setExpenses, loadExpenses, addReceipts } from "../../actions/expenses";
+import {
+    setExpenses,
+    loadExpenses,
+    addReceipts,
+    addComment
+} from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
 import receipts from "../fixtures/receipts";
 
@@ -71,5 +76,12 @@ describe("Expenses Reducer", () => {
         const action = addReceipts(id, receipt);
         const state = expensesReducer(initialState, action);
         expect(state[0].receipts).toEqual(receipt);
+    });
+    it("should add comment on expense", () => {
+        const id = initialState[0].id;
+        const comment = "ELOP";
+        const action = addComment(id, comment);
+        const state = expensesReducer(initialState, action);
+        expect(state[0].comment).toBe(comment);
     });
 });

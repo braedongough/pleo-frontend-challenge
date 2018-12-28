@@ -37,3 +37,18 @@ export const startAddReceipts = expenseId => {
         dispatch(addReceipts(expenseId, receipts));
     };
 };
+
+export const addComment = (expenseId, comment) => ({
+    type: "ADD_COMMENT",
+    expenseId,
+    comment
+});
+
+export const startAddComment = (expenseId, comment) => {
+    return async dispatch => {
+        await API.post(`${expenseId}/`, {
+            comment
+        });
+        dispatch(addComment(expenseId, comment));
+    };
+};

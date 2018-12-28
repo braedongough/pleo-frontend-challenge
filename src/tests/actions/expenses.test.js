@@ -7,8 +7,8 @@ import {
     startLoadExpenses,
     addReceipts,
     startAddReceipts,
-    loadReceipts,
-    startLoadReceipts
+    addComment,
+    startAddComment
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
 import receipts from "../fixtures/receipts";
@@ -81,28 +81,30 @@ describe("SET_EXPENSES", () => {
             });
         });
     });
-    // describe("LOAD_RECEIPTS", () => {
-    //     it("should setup loadReceipts action object", () => {
-    //         const expenseId = expenses[0].id;
-    //         const action = loadReceipts(expenseId, receipts);
-    //         expect(action).toEqual({
-    //             type: "LOAD_RECEIPTS",
-    //             expenseId,
-    //             receipts
-    //         });
-    //     });
-    //     it("should fetch receipt data from api", done => {
-    //         const store = createMockStore({});
-    //         const expenseId = expenses[0].id;
-    //         store.dispatch(startLoadReceipts(expenseId)).then(() => {
-    //             const actions = store.getActions();
-    //             expect(actions[0]).toEqual({
-    //                 type: "LOAD_RECEIPTS",
-    //                 expenseId,
-    //                 receipts: expect.any(Array)
-    //             });
-    //             done();
-    //         });
-    //     });
-    // });
+    describe("ADD_COMMENT", () => {
+        it("should setup addComment action object", () => {
+            const expenseId = expenses[0].id;
+            const comment = "this is the greatest comment ever";
+            const action = addComment(expenseId, comment);
+            expect(action).toEqual({
+                type: "ADD_COMMENT",
+                expenseId,
+                comment
+            });
+        });
+        it("should make post request to api with comment", done => {
+            const store = createMockStore({});
+            const expenseId = expenses[0].id;
+            const comment = "this is the greatest comment ever";
+            store.dispatch(startAddComment(expenseId, comment)).then(() => {
+                const actions = store.getActions();
+                expect(actions[0]).toEqual({
+                    type: "ADD_COMMENT",
+                    expenseId,
+                    comment
+                });
+                done();
+            });
+        });
+    });
 });

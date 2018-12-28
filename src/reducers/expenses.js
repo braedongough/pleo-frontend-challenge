@@ -17,6 +17,17 @@ export default (state = expensesReducerDefaultState, action) => {
                     return expense;
                 }
             });
+        case "ADD_COMMENT":
+            return state.map(expense => {
+                if (expense.id === action.expenseId) {
+                    return {
+                        ...expense,
+                        comment: action.comment
+                    };
+                } else {
+                    return expense;
+                }
+            });
         default:
             return state;
     }

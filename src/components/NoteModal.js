@@ -16,3 +16,5 @@ export default ({ isOpen }) => (
         <button className="button--secondary">Cancel</button>
     </Modal>
 );
+
+//Remember to take the modal fix out of the base style settings and move it into the model component setting file

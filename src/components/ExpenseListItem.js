@@ -44,35 +44,8 @@ export class ExpenseListItem extends React.Component {
     }
 }
 
-// export const ExpenseListItem = ({
-//     receipts,
-//     merchant,
-//     user,
-//     amount,
-//     comment,
-//     id
-// }) => (
-//     <div className="list-item">
-//         <h3>{merchant}</h3>
-//         <p>
-//             {user.first} {user.last}
-//         </p>
-//         <h4>
-//             {amount.value} {amount.currency}
-//         </h4>
-//         <p>note: {comment}</p>
-//         <div>
-//             <button className="button">Add Note</button>
-//             <FilePond
-//                 allowMultiple={true}
-//                 maxFiles={3}
-//                 server={`${baseURL}/${id}/receipts`}
-//                 name="receipt"
-//             />
-//         </div>
-//     </div>
-// );
-
 export default connect()(ExpenseListItem);
 
 //Add modal so that notes can be added to an expense. Currently FilePond hovers above modal when open. Inspect CSS in console to see what might be causing this.
+
+//figure out if I can add a body to the post request that goes out through FilePond to get the receipt information to persist, similar to how I added the body object to the post req for note.
