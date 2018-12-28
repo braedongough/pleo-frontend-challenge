@@ -1,26 +1,31 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
-  color: $dark-grey;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: $m-size;
-  line-height: 1.6;
+    color: $dark-grey;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: $m-size;
+    line-height: 1.6;
 }
 
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 button:disabled {
-  cursor: default;
+    cursor: default;
 }
 
 .is-active {
-  font-weight: bold;
+    font-weight: bold;
+}
+
+//fix for React Modal appear underneath <FilePond />
+.ReactModal__Overlay {
+    z-index: 100;
 }
