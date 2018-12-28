@@ -2,12 +2,19 @@ import React from "react";
 import { FilePond, File } from "react-filepond";
 import { connect } from "react-redux";
 import { baseURL } from "../api/api";
-import NodeModal from "./NoteModal";
+import { startAddComment } from "../actions/expenses";
 import NoteModal from "./NoteModal";
 
 export class ExpenseListItem extends React.Component {
     state = {
         isOpen: false
+    };
+    handleAddNote = e => {
+        this.props.dispatch(startAddComment(this.props.id, e.target.value));
+        this.setState({
+            isOpen: false
+        });
+        console.log(this.props.comment);
     };
     openModal = () => {
         this.setState({
@@ -38,14 +45,15 @@ export class ExpenseListItem extends React.Component {
                         name="receipt"
                     />
                 </div>
-                <NoteModal isOpen={this.state.isOpen} />
+                <NoteModal
+                    isOpen={this.state.isOpen}
+                    handleAddNote={this.handleAddNote}
+                />
             </div>
         );
     }
 }
 
 export default connect()(ExpenseListItem);
-
-//Add modal so that notes can be added to an expense. Currently FilePond hovers above modal when open. Inspect CSS in console to see what might be causing this.
 
 //figure out if I can add a body to the post request that goes out through FilePond to get the receipt information to persist, similar to how I added the body object to the post req for note.

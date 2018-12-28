@@ -3,7 +3,7 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#app");
 
-export default ({ isOpen }) => (
+export default ({ isOpen, handleAddNote }) => (
     <Modal isOpen={isOpen} contentLabel="Example Modal">
         <div>Add Note</div>
         <div>Under 150 characters</div>
@@ -12,7 +12,9 @@ export default ({ isOpen }) => (
             maxLength="150"
             className="text-area"
         />
-        <button className="button">Confirm</button>
+        <button className="button" onClick={handleAddNote}>
+            Confirm
+        </button>
         <button className="button--secondary">Cancel</button>
     </Modal>
 );
