@@ -5,23 +5,23 @@ it("should setup default filter values", () => {
     const state = filtersReducer(undefined, { type: "@@INIT" });
     expect(state).toEqual({
         text: "",
-        sortByCurrency: "",
+        filterByCurrency: "",
         startDate: null,
         endDate: null
     });
 });
 
-it("should set sortByCurrency to EUR", () => {
+it("should set filterByCurrency to EUR", () => {
     const currency = "EUR";
     const currentState = {
         text: "",
         startDate: null,
         endDate: null,
-        sortByCurrency: "DKK"
+        filterByCurrency: "DKK"
     };
-    const action = { type: "SORT_BY_CURRENCY", currencyCode: currency };
+    const action = { type: "FILTER_BY_CURRENCY", currencyCode: currency };
     const state = filtersReducer(currentState, action);
-    expect(state.sortByCurrency).toBe("EUR");
+    expect(state.filterByCurrency).toBe("EUR");
 });
 
 it("should set text filter", () => {

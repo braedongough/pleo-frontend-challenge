@@ -1,7 +1,7 @@
 //Filters Reducer
 const filtersReducerDefaultState = {
     text: "",
-    sortByCurrency: "",
+    filterByCurrency: "",
     startDate: null,
     endDate: null
 };
@@ -13,10 +13,10 @@ export default (state = filtersReducerDefaultState, action) => {
                 ...state,
                 text: action.text
             };
-        case "SORT_BY_CURRENCY":
+        case "FILTER_BY_CURRENCY":
             return {
                 ...state,
-                sortByCurrency: action.currencyCode
+                filterByCurrency: action.currencyCode
             };
         case "SET_START_DATE":
             return {

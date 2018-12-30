@@ -1,7 +1,7 @@
 import {
     setStartDate,
     setEndDate,
-    sortByCurrency,
+    filterByCurrency,
     setTextFilter
 } from "../../actions/filters";
 import moment from "moment";
@@ -22,11 +22,11 @@ it("should generate set end date action object", () => {
     });
 });
 
-it("should generate sort by sortByCurrency action object", () => {
+it("should generate sort by filterByCurrency action object", () => {
     const currencyCode = "EUR";
-    const action = sortByCurrency(currencyCode);
+    const action = filterByCurrency(currencyCode);
     expect(action).toEqual({
-        type: "SORT_BY_CURRENCY",
+        type: "FILTER_BY_CURRENCY",
         currencyCode
     });
 });

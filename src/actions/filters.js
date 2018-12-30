@@ -5,8 +5,8 @@ export const setTextFilter = (text = "") => ({
 });
 
 //SORT_BY_CURRENCY
-export const sortByCurrency = currencyCode => ({
-    type: "SORT_BY_CURRENCY",
+export const filterByCurrency = currencyCode => ({
+    type: "FILTER_BY_CURRENCY",
     currencyCode
 });
 

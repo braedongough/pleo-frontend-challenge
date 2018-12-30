@@ -1,5 +1,5 @@
 import React from "react";
-import { FilePond, File } from "react-filepond";
+import { FilePond } from "react-filepond";
 import { connect } from "react-redux";
 import { baseURL } from "../api/api";
 import { startAddComment } from "../actions/expenses";
