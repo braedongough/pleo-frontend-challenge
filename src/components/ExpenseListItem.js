@@ -10,16 +10,18 @@ export class ExpenseListItem extends React.Component {
         isOpen: false
     };
     handleAddNote = e => {
-        this.props.dispatch(startAddComment(this.props.id, e.target.value));
+        e.preventDefault();
+        const id = this.props.id;
+        const comment = e.target.elements["comment-text"].value;
+        this.props.dispatch(startAddComment(id, comment));
         this.setState({
             isOpen: false
         });
-        console.log(this.props.comment);
     };
-    openModal = () => {
-        this.setState({
-            isOpen: true
-        });
+    toggleModal = () => {
+        this.setState(prevState => ({
+            isOpen: !prevState.isOpen
+        }));
     };
     render() {
         return (
@@ -34,7 +36,7 @@ export class ExpenseListItem extends React.Component {
                 <p>note: {this.props.comment}</p>
 
                 <div>
-                    <button className="button" onClick={this.openModal}>
+                    <button className="button" onClick={this.toggleModal}>
                         Add Note
                     </button>
 
@@ -48,6 +50,7 @@ export class ExpenseListItem extends React.Component {
                 <NoteModal
                     isOpen={this.state.isOpen}
                     handleAddNote={this.handleAddNote}
+                    toggleModal={this.toggleModal}
                 />
             </div>
         );
@@ -55,5 +58,7 @@ export class ExpenseListItem extends React.Component {
 }
 
 export default connect()(ExpenseListItem);
+
+//setup handleAddNote function but currently doesn't work. It looks like it correctly posts to the api but doesn't actually update the state. Probably a problem with the reducer.
 
 //figure out if I can add a body to the post request that goes out through FilePond to get the receipt information to persist, similar to how I added the body object to the post req for note.
