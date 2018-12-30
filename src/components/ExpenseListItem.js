@@ -42,11 +42,13 @@ export class ExpenseListItem extends React.Component {
 
                     <FilePond
                         allowMultiple={true}
+                        instantUpload={true}
                         maxFiles={3}
                         server={`${baseURL}/${this.props.id}/receipts`}
                         name="receipt"
                     />
                 </div>
+
                 <NoteModal
                     isOpen={this.state.isOpen}
                     handleAddNote={this.handleAddNote}
@@ -58,7 +60,3 @@ export class ExpenseListItem extends React.Component {
 }
 
 export default connect()(ExpenseListItem);
-
-//setup handleAddNote function but currently doesn't work. It looks like it correctly posts to the api but doesn't actually update the state. Probably a problem with the reducer.
-
-//figure out if I can add a body to the post request that goes out through FilePond to get the receipt information to persist, similar to how I added the body object to the post req for note.
