@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {
     setTextFilter,
-    sortByCurrency,
+    filterByCurrency,
     setStartDate,
     setEndDate
 } from "../actions/filters";
@@ -75,8 +75,8 @@ const mapDispatchToProps = dispatch => ({
     setTextFilter: text => {
         dispatch(setTextFilter(text));
     },
-    sortByCurrency: () => {
-        dispatch(sortByCurrency());
+    filterByCurrency: () => {
+        dispatch(filterByCurrency());
     }
 });
 

@@ -2,11 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { startLoadExpenses } from "../actions/expenses";
 import ExpenseListItem from "./ExpenseListItem";
-//import selector
+import selectExpenses from "../selectors/expenses";
 
 export class ExpenseList extends React.Component {
     state = {
-        offset: 25
+        offset: 0,
+        scrolling: false
     };
     componentDidMount() {
         this.scrollListener = window.addEventListener("scroll", e => {
@@ -14,19 +15,29 @@ export class ExpenseList extends React.Component {
         });
     }
     handleScroll = e => {
+        if (this.props.expenses.length < this.state.offset) return;
+        if (this.state.scrolling) return;
         const lastLi = document.querySelector(
             "div#expense-list > div:last-child"
         );
         const lastLiOffset = lastLi.offsetTop + lastLi.clientHeight;
         const pageOffset = window.pageYOffset + window.innerHeight;
         let bottomOffset = 20;
-        if (pageOffset > lastLiOffset - bottomOffset) this.loadExpenses();
+        if (pageOffset > lastLiOffset - bottomOffset) this.loadMore();
     };
     loadExpenses = () => {
         this.props.dispatch(startLoadExpenses(this.state.offset));
-        this.setState(prevState => ({
-            offset: prevState.offset + 25
-        }));
+        this.setState({
+            scrolling: false
+        });
+    };
+    loadMore = () => {
+        this.setState(prevState => {
+            return {
+                offset: prevState.offset + 25,
+                scrolling: true
+            };
+        }, this.loadExpenses);
     };
     render() {
         return (
@@ -41,10 +52,8 @@ export class ExpenseList extends React.Component {
     }
 }
 
-//this is mapped to props because it will later be used in the
-//selector when I implement the filters
 const mapStateToProps = state => ({
-    expenses: state.expenses
+    expenses: selectExpenses(state.expenses, state.filters)
 });
 
 export default connect(mapStateToProps)(ExpenseList);
