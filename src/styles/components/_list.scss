@@ -1,63 +1,71 @@
 .list-header {
-  background: $off-white;
-  border: 1px solid darken($off-white, 7%);
-  color: $grey;
-  display: flex;
-  justify-content: space-between;
-  padding: $s-size $m-size;
+    background: $off-white;
+    border: 1px solid darken($off-white, 7%);
+    color: $grey;
+    display: flex;
+    justify-content: space-between;
+    padding: $s-size $m-size;
 }
 
 .list-body {
-  margin-bottom: $m-size;
-  @media (min-width: $desktop-breakpoint) {
-    margin-bottom: $l-size;
-  }
+    margin-bottom: $m-size;
+    @media (min-width: $desktop-breakpoint) {
+        margin-bottom: $l-size;
+    }
 }
 
 .list-item {
-  border: 1px solid darken($off-white, 7%);
-  border-top: none;
-  color: $dark-grey;
-  display: flex;
-  flex-direction: column;
-  padding: $s-size;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  &:hover {
-    background: $off-white;
-  }
-  @media (min-width: $desktop-breakpoint) {
-    align-items: center;
+    border: 1px solid darken($off-white, 7%);
+    border-top: none;
+    color: $dark-grey;
+    display: flex;
     flex-direction: row;
+    padding: $s-size;
+    text-decoration: none;
     justify-content: space-between;
-  }
+    @media (min-width: $desktop-breakpoint) {
+        align-items: center;
+    }
 }
 
 .list-item--message {
-  @extend .list-item;
-  align-items: center;
-  color: $grey;
-  justify-content: center;
-  padding: $m-size;
-  &:hover {
-    background: none;
-  }
+    @extend .list-item;
+    align-items: center;
+    color: $grey;
+    justify-content: center;
+    padding: $m-size;
 }
 
 .list-item__title {
-  margin: 0;
-  word-break: break-all;
+    margin: 0;
+    word-break: break-all;
 }
 
 .list-item__sub-title {
-  color: $grey;
-  font-size: $font-size-small;
+    color: $grey;
+    font-size: $font-size-small;
 }
 
 .list-item__data {
-  margin: $s-size 0 0 0;
-  @media (min-width: $desktop-breakpoint) {
-    margin: 0;
-    padding-left: $s-size;
-  }
+    margin: $s-size 0 0 0;
+    @media (min-width: $desktop-breakpoint) {
+        margin: 0;
+        padding-left: $s-size;
+    }
+}
+
+.list-item__note-title {
+    font-weight: 600;
+    max-width: 15rem;
+    text-shadow: 2px 2px 5px $off-white;
+}
+
+.list-item__note {
+    font-weight: 300;
+    padding: $s-size;
+    transition: 0.3s ease;
+    &:hover {
+        text-shadow: 2px 2px 5px $grey;
+        cursor: pointer;
+    }
 }

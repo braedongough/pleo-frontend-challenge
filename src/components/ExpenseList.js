@@ -42,6 +42,9 @@ export class ExpenseList extends React.Component {
     render() {
         return (
             <div className="content-container">
+                <div className="list-header">
+                    <div>Expenses</div>
+                </div>
                 <div className="list-body" id="expense-list">
                     {this.props.expenses.length === 0 ? (
                         <div className="list-item--message">
