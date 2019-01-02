@@ -1,0 +1,4 @@
+//fix because file pond component appears over top of date ranger picker when open
+.DateRangePicker {
+    z-index: 100;
+}
