@@ -1,10 +1,8 @@
 import React from "react";
 import Modal from "react-modal";
 
-Modal.setAppElement("#app");
-
 export default ({ isOpen, handleAddNote, toggleModal }) => (
-    <Modal isOpen={isOpen} contentLabel="Example Modal">
+    <Modal isOpen={isOpen} contentLabel="Note Modal">
         <div>Add Note</div>
         <div>Under 150 characters</div>
         <form onSubmit={handleAddNote}>

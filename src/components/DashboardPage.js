@@ -3,12 +3,10 @@ import ExpenseList from "./ExpenseList";
 import ExpenseListFilters from "./ExpenseListFilters";
 import Header from "./Header";
 
-export const DashboardPage = () => (
+export default () => (
     <div>
         <Header />
         <ExpenseListFilters />
         <ExpenseList />
     </div>
 );
-
-export default DashboardPage;

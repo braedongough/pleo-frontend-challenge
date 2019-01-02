@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import Modal from "react-modal";
 import Dashboard from "./components/DashboardPage";
 import LoadingPage from "./components/LoadingPage";
 import store from "./store/configureStore";
@@ -15,6 +16,8 @@ import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
 
 registerPlugin(FilePondPluginImagePreview);
+
+Modal.setAppElement("#app");
 
 ReactDOM.render(<LoadingPage />, document.getElementById("app"));
 
