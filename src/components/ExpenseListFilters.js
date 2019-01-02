@@ -23,8 +23,8 @@ export class ExpenseListFilters extends React.Component {
     onTextChange = e => {
         this.props.setTextFilter(e.target.value);
     };
-    onSortChange = e => {
-        //insert logic for filtering based on currency
+    onCurrencyChange = e => {
+        this.props.filterByCurrency(e.target.value);
     };
     render() {
         return (
@@ -38,6 +38,18 @@ export class ExpenseListFilters extends React.Component {
                             value={this.props.filters.text}
                             onChange={this.onTextChange}
                         />
+                    </div>
+                    <div className="input-group__item">
+                        <select
+                            value={this.props.filters.filterByCurrency}
+                            onChange={this.onCurrencyChange}
+                            className="select"
+                        >
+                            <option value="">All Currencies</option>
+                            <option value="EUR">EUR</option>
+                            <option value="DKK">DKK</option>
+                            <option value="GBP">GBP</option>
+                        </select>
                     </div>
                     <div className="input-group__item">
                         <DateRangePicker
@@ -75,8 +87,8 @@ const mapDispatchToProps = dispatch => ({
     setTextFilter: text => {
         dispatch(setTextFilter(text));
     },
-    filterByCurrency: () => {
-        dispatch(filterByCurrency());
+    filterByCurrency: currencyCode => {
+        dispatch(filterByCurrency(currencyCode));
     }
 });
 
