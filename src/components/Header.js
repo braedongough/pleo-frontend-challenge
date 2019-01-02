@@ -1,7 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
 
-export const Header = ({ startLogout }) => (
+export default () => (
     <header className="header">
         <div className="content-container">
             <div className="header__content">
@@ -12,12 +11,3 @@ export const Header = ({ startLogout }) => (
         </div>
     </header>
 );
-
-const mapDispatchToProps = dispatch => ({
-    startLogout: () => dispatch(startLogout())
-});
-
-export default connect(
-    undefined,
-    mapDispatchToProps
-)(Header);

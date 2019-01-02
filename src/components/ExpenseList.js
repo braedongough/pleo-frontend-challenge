@@ -14,7 +14,7 @@ export class ExpenseList extends React.Component {
             this.handleScroll(e);
         });
     }
-    handleScroll = e => {
+    handleScroll = () => {
         if (this.props.expenses.length < this.state.offset) return;
         if (this.state.scrolling) return;
         const lastLi = document.querySelector(
