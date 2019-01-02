@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ExpenseList with empty message 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-body"
+    id="expense-list"
+  >
+    <div
+      className="list-item--message"
+    >
+      <span>
+        No Expenses
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render ExpenseList with expenses 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-body"
+    id="expense-list"
+  >
+    <Connect(ExpenseListItem)
+      amount={
+        Object {
+          "currency": "GBP",
+          "value": "2149.29",
+        }
+      }
+      category=""
+      comment=""
+      date="2017-06-21T08:45:09.326Z"
+      id="5b995dff2e3cb74644948a66"
+      key="5b995dff2e3cb74644948a66"
+      merchant="QUONK"
+      receipts={Array []}
+      user={
+        Object {
+          "email": "atkins.blackburn@pleo.io",
+          "first": "Atkins",
+          "last": "Blackburn",
+        }
+      }
+    />
+    <Connect(ExpenseListItem)
+      amount={
+        Object {
+          "currency": "EUR",
+          "value": "731.92",
+        }
+      }
+      category=""
+      comment=""
+      date="2017-05-30T14:12:31.054Z"
+      id="5b995dffdeec40464bd614bf"
+      key="5b995dffdeec40464bd614bf"
+      merchant="WRAPTURE"
+      receipts={Array []}
+      user={
+        Object {
+          "email": "barbara.downs@pleo.io",
+          "first": "Barbara",
+          "last": "Downs",
+        }
+      }
+    />
+    <Connect(ExpenseListItem)
+      amount={
+        Object {
+          "currency": "EUR",
+          "value": "603.42",
+        }
+      }
+      category=""
+      comment=""
+      date="2017-06-19T23:01:32.198Z"
+      id="5b995dffcc602abb5c700771"
+      key="5b995dffcc602abb5c700771"
+      merchant="SENMAO"
+      receipts={Array []}
+      user={
+        Object {
+          "email": "berta.wise@pleo.io",
+          "first": "Berta",
+          "last": "Wise",
+        }
+      }
+    />
+  </div>
+</div>
+`;

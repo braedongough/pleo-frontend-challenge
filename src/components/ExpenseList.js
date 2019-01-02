@@ -43,9 +43,20 @@ export class ExpenseList extends React.Component {
         return (
             <div className="content-container">
                 <div className="list-body" id="expense-list">
-                    {this.props.expenses.map(expense => (
-                        <ExpenseListItem key={expense.id} {...expense} />
-                    ))}
+                    {this.props.expenses.length === 0 ? (
+                        <div className="list-item--message">
+                            <span>No Expenses</span>
+                        </div>
+                    ) : (
+                        this.props.expenses.map(expense => {
+                            return (
+                                <ExpenseListItem
+                                    key={expense.id}
+                                    {...expense}
+                                />
+                            );
+                        })
+                    )}
                 </div>
             </div>
         );
