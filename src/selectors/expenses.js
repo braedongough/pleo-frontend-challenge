@@ -23,5 +23,3 @@ export default (expenses, { text, filterByCurrency, startDate, endDate }) =>
 
         return startDateMatch && endDateMatch && currencyMatch && textMatch;
     });
-
-//fix text match function because it;s fucked
