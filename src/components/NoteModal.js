@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "react-modal";
 
 export default ({ isOpen, handleAddNote, toggleModal, noteText }) => (
+    // I suggesst also writing your own modal, it's usually a good challenge
     <Modal
         isOpen={isOpen}
         contentLabel="Note Modal"

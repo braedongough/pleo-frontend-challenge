@@ -21,6 +21,13 @@ Modal.setAppElement("#app");
 
 ReactDOM.render(<LoadingPage />, document.getElementById("app"));
 
+// That is an interesting way of initializing the store and the app,
+// Usually the root component (or the component needing the expenses)
+// would dispatch that action
+// I don't dislike that though... Makes things clear.
+// Only problem is that you have to render twice using ReactDOM.render
+// Dashboard could trigger `startSetExpenses`, in the state you would have a "fetching: true|false"
+// And Dashboard would render Loading when fetchin is true, and Header+ExpenseListFilters+ExpenseList
 store.dispatch(startSetExpenses()).then(() => {
     ReactDOM.render(
         <Provider store={store}>

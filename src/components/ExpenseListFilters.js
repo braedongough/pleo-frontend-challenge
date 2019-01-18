@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+// You could import all the filters actions like so
+// import * as actionsFilters from '../actions/filters'
 import {
     setTextFilter,
     filterByCurrency,
@@ -76,6 +78,16 @@ const mapStateToProps = state => {
         filters: state.filters
     };
 };
+
+// I suggest giving a read at redux-actions, which would remove the redundancy of this code
+// https://github.com/redux-utilities/redux-actions
+// Example
+// const mapDispatchToProps = {
+//     setStartDate: actionsFilters.setStartDate,
+//     setEndDate: actionsFilters.setEndDate,
+//     setTextFilter: actionsFilters.setTextFilter,
+//     filterByCurrency: actionsFilter.filterByCurrency
+// }
 
 const mapDispatchToProps = dispatch => ({
     setStartDate: startDate => {

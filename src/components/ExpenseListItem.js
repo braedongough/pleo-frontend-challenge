@@ -13,6 +13,10 @@ export class ExpenseListItem extends React.Component {
     handleAddNote = e => {
         e.preventDefault();
         const id = this.props.id;
+        // Ideally your Modal would send you back the value of the promt,
+        // It's not ExpenseListItem's responsibility to pull in the internals of the modal
+        // Read up on the "Tell, don't ask" principle
+        // https://martinfowler.com/bliki/TellDontAsk.html
         const comment = e.target.elements["comment-text"].value;
         this.props.dispatch(startAddComment(id, comment));
         this.setState({
@@ -60,6 +64,9 @@ export class ExpenseListItem extends React.Component {
                         Add Note
                     </button>
 
+                    {/*
+                    I think it would be a good exercice for you to try and build your own file upload component here
+                    */}
                     <FilePond
                         allowMultiple={true}
                         instantUpload={true}
@@ -80,4 +87,5 @@ export class ExpenseListItem extends React.Component {
     }
 }
 
+// Why connect if there's nothing to connect ;)
 export default connect()(ExpenseListItem);

@@ -1,5 +1,7 @@
 const expensesReducerDefaultState = [];
 
+
+// Also check redux-actions for this. It makes things so much cleaner
 export default (state = expensesReducerDefaultState, action) => {
     switch (action.type) {
         case "SET_EXPENSES":

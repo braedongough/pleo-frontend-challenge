@@ -14,16 +14,38 @@ export class ExpenseList extends React.Component {
             this.handleScroll(e);
         });
     }
+
+    // Nice one!
+    // There is a bit of a simpler way to do this, check out our expense list component
+    // onScroll = async () => {
+    //     const {fetching, total, expenses} = this.props
+    //     if (
+    //         !fetching &&
+    //         total > expenses.length &&
+    //         this.scrollListRef &&
+    //         this.scrollListRef.clientHeight + this.scrollListRef.scrollTop + 600 >=
+    //             this.scrollListRef.scrollHeight
+    //     ) {
+    //         this.props.nextPage()
+    //     }
+    // }
     handleScroll = () => {
-        if (this.props.expenses.length < this.state.offset) return;
-        if (this.state.scrolling) return;
+        // Try to never use this syntax for IFs,
+        // it's easy to make mistakes and adding something else in the next line, thinking it's still in the IF
+        // Do like this: (always)
+        // You could have combined those two IFs
+        if (this.props.expenses.length < this.state.offset || this.state.scrolling) {
+            return;
+        }
         const lastLi = document.querySelector(
             "div#expense-list > div:last-child"
         );
         const lastLiOffset = lastLi.offsetTop + lastLi.clientHeight;
         const pageOffset = window.pageYOffset + window.innerHeight;
         let bottomOffset = 20;
-        if (pageOffset > lastLiOffset - bottomOffset) this.loadMore();
+        if (pageOffset > lastLiOffset - bottomOffset) { 
+            this.loadMore();
+        }
     };
     loadExpenses = () => {
         this.props.dispatch(startLoadExpenses(this.state.offset));
@@ -32,6 +54,7 @@ export class ExpenseList extends React.Component {
         });
     };
     loadMore = () => {
+        // Good use of update state from a previous state 💪
         this.setState(prevState => {
             return {
                 offset: prevState.offset + 25,
@@ -47,6 +70,8 @@ export class ExpenseList extends React.Component {
                 </div>
                 <div className="list-body" id="expense-list">
                     {this.props.expenses.length === 0 ? (
+                        // This can seem very sublte bit this should be in it's own file, as a standalone component
+                        // (Try to make things a small and reusable as possible)
                         <div className="list-item--message">
                             <span>No Expenses</span>
                         </div>
@@ -66,7 +91,9 @@ export class ExpenseList extends React.Component {
     }
 }
 
+// Good use of the selectors
 const mapStateToProps = state => ({
+    // selectore usualy take the whole state though, then pull from it.
     expenses: selectExpenses(state.expenses, state.filters)
 });
 
